@@ -19,9 +19,14 @@ class CustomPresentationController: UIPresentationController {
         let containerView = self.containerView!
         
         self.overlay = UIView(frame: containerView.bounds)
-        self.overlay.gestureRecognizers = [UITapGestureRecognizer(target: self, action: Selector("overlayDidTouch"))]
+        self.overlay.gestureRecognizers = [UITapGestureRecognizer(target: self, action: Selector(("overlayDidTouch:")))]
         self.containerView?.backgroundColor = UIColor.black
         self.overlay.alpha = 0.0
         containerView.insertSubview(self.overlay, at: 0)
+        
+        // ViewControllerの遷移アニメーションと同時に指定されたアニメーションを実行するメソッド
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] (context) in
+            self?.overlay.alpha = 0.5
+            }, completion: nil)
     }
 }
