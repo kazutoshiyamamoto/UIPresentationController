@@ -35,5 +35,13 @@ class CustomPresentationController: UIPresentationController {
         return CGSize(width: parentSize.width, height: parentSize.height)
     }
     
-    
+    // モーダルのframe
+    func frameOfPresentedViewInContainerView() -> CGRect {
+        var presentedViewFrame = CGRect.zero
+        let containerBounds = containerView!.bounds
+        presentedViewFrame.size = self.sizeForChildContentContainer(container: self.presentedViewController, withParentContainerSize: containerBounds.size)
+        presentedViewFrame.origin.x = containerBounds.size.width - presentedViewFrame.size.width
+        presentedViewFrame.origin.y = containerBounds.size.height - presentedViewFrame.size.height
+        return presentedViewFrame
+    }
 }
