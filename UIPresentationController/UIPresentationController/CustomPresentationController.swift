@@ -19,20 +19,20 @@ class CustomPresentationController: UIPresentationController {
         let containerView = self.containerView!
         
         self.overlay = UIView(frame: containerView.bounds)
-        self.overlay.gestureRecognizers = [UITapGestureRecognizer(target: self, action: Selector(("overlayDidTouch:")))]
-        self.containerView?.backgroundColor = UIColor.black
+        self.overlay.gestureRecognizers = [UITapGestureRecognizer(target: self, action: #selector(CustomPresentationController.overlayDidTouch(_:)))]
+        self.overlay.backgroundColor = UIColor.black
         self.overlay.alpha = 0.0
         containerView.insertSubview(self.overlay, at: 0)
         
         // ViewControllerの遷移アニメーションと同時に指定されたアニメーションを実行するメソッド
-        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] (context) in
-            self?.overlay.alpha = 0.5
-            }, completion: nil)
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: {[weak self] context in
+            self?.overlay.alpha = 0.7
+            }, completion:nil)
     }
     
     // 非表示時のアニメーションが開始されようとしていることをプレゼンテーションコントローラーに通知するメソッド
     override func dismissalTransitionWillBegin() {
-        self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] (context) in
+        self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] context in
             self?.overlay.alpha = 0.0
             }, completion: nil)
     }
@@ -45,27 +45,31 @@ class CustomPresentationController: UIPresentationController {
     }
     
     // モーダルのサイズ
-    func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+    override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSize(width: parentSize.width, height: parentSize.height)
     }
     
     // モーダルのframe
-    func frameOfPresentedViewInContainerView() -> CGRect {
-        var presentedViewFrame = CGRect.zero
+    override var frameOfPresentedViewInContainerView: CGRect {
+        var presentedViewFrame = CGRect()
         let containerBounds = containerView!.bounds
-        presentedViewFrame.size = self.sizeForChildContentContainer(container: self.presentedViewController, withParentContainerSize: containerBounds.size)
-        presentedViewFrame.origin.x = containerBounds.size.width - presentedViewFrame.size.width
-        presentedViewFrame.origin.y = containerBounds.size.height - presentedViewFrame.size.height
+        let childContentSize = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerBounds.size)
+        presentedViewFrame.size = childContentSize
+        presentedViewFrame.origin.x = 0.0
+        presentedViewFrame.origin.y = containerBounds.height / 2.0
+        
         return presentedViewFrame
     }
     
     // コンテナビューのレイアウト開始前に呼ばれる
     override func containerViewWillLayoutSubviews() {
         self.overlay.frame = containerView!.bounds
-        self.presentedView!.frame = self.frameOfPresentedViewInContainerView()
+        self.presentedView?.frame = frameOfPresentedViewInContainerView
+        self.presentedView?.layer.cornerRadius = 10.0
+        self.presentedView?.clipsToBounds = true
     }
     
-    func overlayDidTouch(sender: AnyObject) {
+    @objc func overlayDidTouch(_ sender: UITapGestureRecognizer) {
         self.presentedViewController.dismiss(animated: true, completion: nil)
     }
 }
