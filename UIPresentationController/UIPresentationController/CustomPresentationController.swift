@@ -9,5 +9,8 @@
 import UIKit
 
 class CustomPresentationController: UIPresentationController {
-
+    
+    // 表示時のアニメーションが開始されようとしていることをプレゼンテーションコントローラーに通知するメソッド
+    override func presentationTransitionWillBegin() {
+    }
 }
