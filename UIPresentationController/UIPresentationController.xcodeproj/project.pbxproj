@@ -13,6 +13,7 @@
 		FDB9B15723B9BE5700ED9101 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDB9B15523B9BE5700ED9101 /* Main.storyboard */; };
 		FDB9B15923B9BE5900ED9101 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDB9B15823B9BE5900ED9101 /* Assets.xcassets */; };
 		FDB9B15C23B9BE5900ED9101 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDB9B15A23B9BE5900ED9101 /* LaunchScreen.storyboard */; };
+		FDB9B16423B9C03C00ED9101 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB9B16323B9C03C00ED9101 /* CustomPresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FDB9B15823B9BE5900ED9101 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDB9B15B23B9BE5900ED9101 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FDB9B15D23B9BE5900ED9101 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDB9B16323B9C03C00ED9101 /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				FDB9B14F23B9BE5700ED9101 /* AppDelegate.swift */,
 				FDB9B15123B9BE5700ED9101 /* SceneDelegate.swift */,
 				FDB9B15323B9BE5700ED9101 /* ViewController.swift */,
+				FDB9B16323B9C03C00ED9101 /* CustomPresentationController.swift */,
 				FDB9B15523B9BE5700ED9101 /* Main.storyboard */,
 				FDB9B15823B9BE5900ED9101 /* Assets.xcassets */,
 				FDB9B15A23B9BE5900ED9101 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB9B16423B9C03C00ED9101 /* CustomPresentationController.swift in Sources */,
 				FDB9B15423B9BE5700ED9101 /* ViewController.swift in Sources */,
 				FDB9B15023B9BE5700ED9101 /* AppDelegate.swift in Sources */,
 				FDB9B15223B9BE5700ED9101 /* SceneDelegate.swift in Sources */,
