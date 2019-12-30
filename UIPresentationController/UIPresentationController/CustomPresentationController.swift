@@ -44,4 +44,10 @@ class CustomPresentationController: UIPresentationController {
         presentedViewFrame.origin.y = containerBounds.size.height - presentedViewFrame.size.height
         return presentedViewFrame
     }
+    
+    // コンテナビューのレイアウト開始前に呼ばれる
+    override func containerViewWillLayoutSubviews() {
+        self.overlay.frame = containerView!.bounds
+        self.presentedView!.frame = self.frameOfPresentedViewInContainerView()
+    }
 }
