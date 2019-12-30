@@ -19,12 +19,14 @@ class ViewController: UIViewController {
         let modalViewController = storyboard.instantiateViewController(withIdentifier: "Modal") as! ModalViewController
         modalViewController.modalPresentationStyle = .custom
         modalViewController.transitioningDelegate = self
+        
         present(modalViewController, animated: true, completion: nil)
     }
 }
 
 extension ViewController: UIViewControllerTransitioningDelegate {
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
         return CustomPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
