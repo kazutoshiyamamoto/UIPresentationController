@@ -30,6 +30,13 @@ class CustomPresentationController: UIPresentationController {
             }, completion: nil)
     }
     
+    // 非表示時のアニメーションが開始されようとしていることをプレゼンテーションコントローラーに通知するメソッド
+    override func dismissalTransitionWillBegin() {
+        self.presentedViewController.transitionCoordinator?.animate(alongsideTransition: { [weak self] (context) in
+            self?.overlay.alpha = 0.0
+            }, completion: nil)
+    }
+    
     // モーダルのサイズ
     func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSize(width: parentSize.width, height: parentSize.height)
@@ -50,4 +57,6 @@ class CustomPresentationController: UIPresentationController {
         self.overlay.frame = containerView!.bounds
         self.presentedView!.frame = self.frameOfPresentedViewInContainerView()
     }
+    
+    
 }
