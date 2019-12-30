@@ -67,5 +67,5 @@ class CustomPresentationController: UIPresentationController {
     
     func overlayDidTouch(sender: AnyObject) {
         self.presentedViewController.dismiss(animated: true, completion: nil)
-      }
+    }
 }
