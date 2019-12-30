@@ -10,6 +10,9 @@ import UIKit
 
 class CustomPresentationController: UIPresentationController {
     
+    // モーダルの背景に表示されるオーバーレイビュー
+    var overlay: UIView!
+    
     // 表示時のアニメーションが開始されようとしていることをプレゼンテーションコントローラーに通知するメソッド
     override func presentationTransitionWillBegin() {
     }
