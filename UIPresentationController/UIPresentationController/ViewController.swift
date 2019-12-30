@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tappedButton(_ sender: Any) {
-        let modalViewController = storyboard?.instantiateViewController(withIdentifier: "Modal") as! ModalViewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "Modal", bundle: nil)
+        let modalViewController = storyboard.instantiateViewController(withIdentifier: "Modal") as! ModalViewController
         modalViewController.modalPresentationStyle = .custom
         modalViewController.transitioningDelegate = self
         present(modalViewController, animated: true, completion: nil)
