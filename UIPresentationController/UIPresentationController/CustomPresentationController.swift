@@ -37,6 +37,13 @@ class CustomPresentationController: UIPresentationController {
             }, completion: nil)
     }
     
+    // 非表示時のアニメーション開始後に呼ばれるメソッド
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
+        if completed {
+            self.overlay.removeFromSuperview()
+        }
+    }
+    
     // モーダルのサイズ
     func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSize(width: parentSize.width, height: parentSize.height)
