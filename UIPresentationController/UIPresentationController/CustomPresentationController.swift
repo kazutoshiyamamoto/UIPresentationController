@@ -29,4 +29,11 @@ class CustomPresentationController: UIPresentationController {
             self?.overlay.alpha = 0.5
             }, completion: nil)
     }
+    
+    // モーダルのサイズ
+    func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+        return CGSize(width: parentSize.width, height: parentSize.height)
+    }
+    
+    
 }
