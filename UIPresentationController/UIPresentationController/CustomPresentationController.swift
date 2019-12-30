@@ -37,7 +37,7 @@ class CustomPresentationController: UIPresentationController {
             }, completion: nil)
     }
     
-    // 非表示時のアニメーション開始後に呼ばれるメソッド
+    // 非表示のアニメーション開始後に呼ばれるメソッド
     override func dismissalTransitionDidEnd(_ completed: Bool) {
         if completed {
             self.overlay.removeFromSuperview()
@@ -65,5 +65,7 @@ class CustomPresentationController: UIPresentationController {
         self.presentedView!.frame = self.frameOfPresentedViewInContainerView()
     }
     
-    
+    func overlayDidTouch(sender: AnyObject) {
+        self.presentedViewController.dismiss(animated: true, completion: nil)
+      }
 }
